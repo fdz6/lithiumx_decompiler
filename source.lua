@@ -1,4 +1,5 @@
 local Identifier = 'LithiumX '
+local VersionIdentifier = "v1.0"
 local Configs = getfenv().SynDecompilerConfigs
 local SendDecompile = assert(getfenv().decompile)
 
@@ -55,23 +56,23 @@ getfenv().decompile = (function(Path, ...)
 			end
 
 			if #DefinedVariables > 0 then
-				local Split = Output:split('-- Decompiled with the '..Identifier..' decompiler.')[2]
+				local Split = Output:split('-- Decompiled with the '..Identifier..' decompiler.'..' - '..VersionIdentifier)[2]
 
 				for _, DefinedVariable in pairs(DefinedVariables) do
 					VariableMsg = VariableMsg..'\n'..DefinedVariable
 				end
 
-				Output = '-- Decompiled with the '..Identifier..' decompiler.\n\n'..VariableMsg..Split
+				Output = '-- Decompiled with the '..Identifier..' decompiler.\n\n'..VariableMsg..Split..' - '..VersionIdentifier
 			end
 
 			if #DefinedConstants > 0 then
-				local Split = Output:split('-- Decompiled with the '..Identifier..' decompiler.')[2]
+				local Split = Output:split('-- Decompiled with the '..Identifier..' decompiler.'..' - '..VersionIdentifier)[2]
 
 				for _, DefinedVariable in pairs(DefinedConstants) do
 					ConstantMsg = ConstantMsg..'\n'..DefinedVariable
 				end
 
-				Output = '-- Decompiled with the '..Identifier..' decompiler.\n\n'..ConstantMsg..Split
+				Output = '-- Decompiled with the '..Identifier..' decompiler.\n\n'..ConstantMsg..Split..' - '..VersionIdentifier
 			end
 
 			if Output:find('bytecode') then
