@@ -37,21 +37,21 @@ getfenv().decompile = (function(Path, ...)
 			local DefinedVariables = {}
 
 			for _ = 1, Configs.GetHighestIndex(Output) do
-				Output = Output:gsub('__'..'_', '')
-				Output = Output:gsub('u'..'_', 'Constant_'..'_')
-				Output = Output:gsub('p'..'_', 'Parameter_'..'_')
-				Output = Output:gsub('v'..'_', 'Variable_'..'_')
+				Output = Output:gsub('__'.._, '')
+				Output = Output:gsub('u'.._, 'Constant_'.._)
+				Output = Output:gsub('p'.._, 'Parameter_'.._)
+				Output = Output:gsub('v'.._, 'Variable_'.._)
 
-				if Output:find('Variable_'..'_') and not Configs.IsDefined(DefinedVariables, 'local Variable_'..'_') then
-					Output = Output:gsub('local Variable_'..'_', 'Variable_'..'_')
+				if Output:find('Variable_'.._) and not Configs.IsDefined(DefinedVariables, 'local Variable_'.._) then
+					Output = Output:gsub('local Variable_'.._, 'Variable_'.._)
 
-					table.insert(DefinedVariables, 'Variable_'..'_'..' = nil')
+					table.insert(DefinedVariables, 'Variable_'.._..' = nil')
 				end
 
-				if Output:find('Constant_'..'_') and not Configs.IsDefined(DefinedVariables, 'local Constant_'..'_') then
-					Output = Output:gsub('local Constant_'..'_', 'Constant_'..'_')
+				if Output:find('Constant_'.._) and not Configs.IsDefined(DefinedVariables, 'local Constant_'.._) then
+					Output = Output:gsub('local Constant_'.._, 'Constant_'.._)
 
-					table.insert(DefinedConstants, 'Constant_'..'_'..' = nil')
+					table.insert(DefinedConstants, 'Constant_'.._..' = nil')
 				end
 			end
 
